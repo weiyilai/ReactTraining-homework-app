@@ -2,8 +2,7 @@ import React from 'react'
 
 
 const hi = () => (
-    <>
-    <h1>inline style</h1>
+    <>    
     <div style={{
             border: '1px solid #DDD',
             padding: '1rem',
@@ -13,7 +12,22 @@ const hi = () => (
             margin: '2rem auto',
             'max-width': '80%'
         }}>
-        Name <br />
+        <h1>inline style</h1>
+        <label>
+        Name
+        <input style={{
+            font: 'inherit',
+            padding: '0.1rem 0.25rem',
+            border: 'NONAME',
+            'border-bottom': '2px solid #ccc',
+            'margin-bottom': '1rem',
+            display: 'block',
+            width: '100%'
+        }}>            
+        </input>
+        </label>
+        <label>
+        Amount
         <input style={{
             font: 'inherit',
             padding: '0.1rem 0.25rem',
@@ -24,17 +38,7 @@ const hi = () => (
             width: '100%'
         }}>
         </input>
-        Amount <br />
-        <input style={{
-            font: 'inherit',
-            padding: '0.1rem 0.25rem',
-            border: 'NONAME',
-            'border-bottom': '2px solid #ccc',
-            'margin-bottom': '1rem',
-            display: 'block',
-            width: '100%'
-        }}>
-        </input>
+        </label>
         <button style={{
             font: 'inherit',
             background: '#ff2058',
