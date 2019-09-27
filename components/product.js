@@ -84,7 +84,7 @@ class inputProduct extends React.Component {
 class outputProduct extends React.Component {
     render () {
         return (
-            <div>
+            <div style={listStyle}>
                 <h2 style={h2Style}>Loaded Account</h2>
             </div>
         );

@@ -1,13 +1,13 @@
-import React from 'react'
-import { inputProduct, outputProduct } from '../components/product'
+import React, { Component } from 'react'
+import * as Components from '../components/product'
 
-class product extends React.Component {
-    return () {
-        return [
-            <div>
-                <inputProduct />,
-
-            </div>
-        ]
-    }
+const product = () => {
+    return (
+        <>
+            <Components.inputProduct/>
+            <Components.outputProduct/>
+        </>
+    )
 }
+
+export default product
