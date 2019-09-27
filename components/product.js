@@ -27,9 +27,33 @@ const liStyle = {
     boxShadow: '0 1px 4px rgba(0, 0, 0, 0.26)',
     display: 'flex',
     justifyContent: 'space-between',
-};  
+};
+
+var numbers = [];
+
+function calculatorTotal (name, amount) {
+    numbers.push(name + '    ' + amount);
+}
+
+const listItems = numbers.map((number) =>
+  <li>{number}</li>
+);
 
 class inputProduct extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { username: '', amount: 0 };
+    }    
+
+    nameChangeHandler = (event) => {
+        this.setState({ username: event.target.value });
+    }
+
+    amountChangeHandler = (event) => {
+        this.setState({ amount: event.target.value });
+    }
+
     render () {
         return (
             <div style={{
@@ -43,7 +67,7 @@ class inputProduct extends React.Component {
             }}>
                 <h1>inline style</h1>
                 Name <br />
-                <input style={{
+                <input type="text" style={{
                     font: 'inherit',
                     padding: '0.1rem 0.25rem',
                     border: 'NONAME',
@@ -51,10 +75,10 @@ class inputProduct extends React.Component {
                     'margin-bottom': '1rem',
                     display: 'block',
                     width: '100%'
-                }}>
+                }} onChange={this.nameChangeHandler}>
                 </input>
                 Amount <br />
-                <input style={{
+                <input type="text" style={{
                     font: 'inherit',
                     padding: '0.1rem 0.25rem',
                     border: 'NONAME',
@@ -62,7 +86,7 @@ class inputProduct extends React.Component {
                     'margin-bottom': '1rem',
                     display: 'block',
                     width: '100%'
-                }}>
+                }} onChange={this.amountChangeHandler}>
                 </input>
                 <button style={{
                     font: 'inherit',
@@ -73,7 +97,7 @@ class inputProduct extends React.Component {
                     margin: '0.5rem 0',
                     'border-radius': '5px',
                     cursor: 'pointer'          
-                }}>
+                }} onClick={calculatorTotal(this.state.username, this.state.amount.toString())}>
                 Add Account
                 </button>
             </div>
@@ -81,11 +105,20 @@ class inputProduct extends React.Component {
     }
 }
 
-class outputProduct extends React.Component {
+class outputProduct extends React.Component {    
+
+    constructor(props) {
+        super(props);
+        this.state = { List: listItems };
+    }
+
     render () {
         return (
             <div style={listStyle}>
                 <h2 style={h2Style}>Loaded Account</h2>
+                <ul style={ulStyle}>
+                    {this.state.List}
+                </ul>
             </div>
         );
     }
