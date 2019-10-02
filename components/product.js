@@ -31,10 +31,6 @@ const liStyle = {
 
 var numbers = [];
 
-function calculatorTotal (name, amount) {
-    numbers.push(name + '    ' + amount);
-}
-
 const listItems = numbers.map((number) =>
   <li>{number}</li>
 );
@@ -54,53 +50,60 @@ class inputProduct extends React.Component {
         this.setState({ amount: event.target.value });
     }
 
+    submitHandle = (event) => {
+        numbers.push(this.state.username + ' ' + this.state.amount.toString());
+        console.log(numbers);
+    }
+
     render () {
         return (
-            <div style={{
-                border: '1px solid #DDD',
-                padding: '1rem',
-                'border-radius': '5px',
-                'box-shadow': '0 2px 8px rgba(0, 0, 0, 0.26)',
-                width: '30rem',
-                margin: '2rem auto',
-                'max-width': '80%'
-            }}>
-                <h1>inline style</h1>
-                Name <br />
-                <input type="text" style={{
-                    font: 'inherit',
-                    padding: '0.1rem 0.25rem',
-                    border: 'NONAME',
-                    'border-bottom': '2px solid #ccc',
-                    'margin-bottom': '1rem',
-                    display: 'block',
-                    width: '100%'
-                }} onChange={this.nameChangeHandler}>
-                </input>
-                Amount <br />
-                <input type="text" style={{
-                    font: 'inherit',
-                    padding: '0.1rem 0.25rem',
-                    border: 'NONAME',
-                    'border-bottom': '2px solid #ccc',
-                    'margin-bottom': '1rem',
-                    display: 'block',
-                    width: '100%'
-                }} onChange={this.amountChangeHandler}>
-                </input>
-                <button style={{
-                    font: 'inherit',
-                    background: '#ff2058',
-                    padding: '0.5rem 2rem',
-                    color: 'white',
-                    border: '1px solid #ff2058',
-                    margin: '0.5rem 0',
+            <form>
+                <div style={{
+                    border: '1px solid #DDD',
+                    padding: '1rem',
                     'border-radius': '5px',
-                    cursor: 'pointer'          
-                }} onClick={calculatorTotal(this.state.username, this.state.amount.toString())}>
-                Add Account
-                </button>
-            </div>
+                    'box-shadow': '0 2px 8px rgba(0, 0, 0, 0.26)',
+                    width: '30rem',
+                    margin: '2rem auto',
+                    'max-width': '80%'
+                    }}>
+                    <h1>inline style</h1>
+                    Name <br />
+                    <input type="text" style={{
+                        font: 'inherit',
+                        padding: '0.1rem 0.25rem',
+                        border: 'NONAME',
+                        'border-bottom': '2px solid #ccc',
+                        'margin-bottom': '1rem',
+                        display: 'block',
+                        width: '100%'
+                    }} onChange={this.nameChangeHandler}>
+                    </input>
+                    Amount <br />
+                    <input type="text" style={{
+                        font: 'inherit',
+                        padding: '0.1rem 0.25rem',
+                        border: 'NONAME',
+                        'border-bottom': '2px solid #ccc',
+                        'margin-bottom': '1rem',
+                        display: 'block',
+                        width: '100%'
+                    }} onChange={this.amountChangeHandler}>
+                    </input>
+                    <button type="button" style={{
+                        font: 'inherit',
+                        background: '#ff2058',
+                        padding: '0.5rem 2rem',
+                        color: 'white',
+                        border: '1px solid #ff2058',
+                        margin: '0.5rem 0',
+                        'border-radius': '5px',
+                        cursor: 'pointer'          
+                    }} onClick={this.submitHandle}>
+                    Add Account
+                    </button>
+                </div>
+            </form>
         );
     }
 }
